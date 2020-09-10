@@ -5,19 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <div id="shopping-list">
-      <h1>{{ header }}</h1>
-      <input type="text" v-model="header">
+    <div class="container">
+      <div id="shopping-list">
+        <h1>{{ header ? header : 'No header' }}</h1>
+        <div class="card">
+          <div class="list-title">
+            <h2>Add Item</h2>
+            <div id="form">
+              <input @keyup.enter="addItem" v-model="newItem" type="text" />
+              <button @click="addItem">Add</button>
+            </div>
+            
+            <h2>Items To Buy</h2>
+          </div>
+
+          <ul class="list">
+            <li class="list-item" v-for="item in items">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
     </div>
+
     <script src="https://unpkg.com/vue"></script>
     <script>
       const shoppingList = new Vue( {
         el: '#shopping-list',
         data: {
-          header: 'Hello there!'
+          header: 'Shopping List App',
+          newItem: '',
+          items: [
+            'Party Hats',
+            'Board Games',
+            'Plastic Cups'
+          ]
+        },
+        methods: {
+          addItem: function() {
+            this.items.push(this.newItem);
+            this.newItem = "";
+          }
         }
       } )
     </script>
