@@ -139,6 +139,8 @@ button.gray {
 .purchased {
   text-decoration: line-through;
   opacity: 0.7;
+  background: rgba(20, 177, 20, 0.1);
+  color: rgb(20, 165, 20);
 }
 
 .priority {
