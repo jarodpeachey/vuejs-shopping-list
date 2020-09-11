@@ -46,6 +46,7 @@ h2 {
   display: flex;
   align-items: center;
   margin-bottom: 16px;
+  margin-top: 12px;
 }
 
 input {
@@ -72,6 +73,32 @@ button {
   border: 1px solid #6ed6ff;
   font-size: 16px;
   cursor: pointer;
+}
+
+button.round {
+  padding: 0px;
+  border-radius: 999px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  padding-left: 1px;
+}
+
+button.gray {
+  background: #e8e8e8;
+  color: #27313b;
+  border: 1px solid #e8e8e8;
+}
+
+.flex-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .list {

@@ -14,13 +14,16 @@
         <h1>{{ header ? header : 'No header' }}</h1>
         <div class="card">
           <div class="list-title">
-            <h2>Add Item</h2>
-            <div id="form">
-              <input @keyup.enter="addItem" v-model="newItem" type="text" />
+            <div class="flex-wrapper">
+              <h2>Shopping List</h2>
+              <button v-if="inputState === 'closed'" @click="changeState('open')" class="round">+</button>
+              <button v-if="inputState === 'open'" @click="changeState('closed')" class="round gray">-</button>
+            </div>
+            <div v-if="inputState === 'open'" id="form">
+              <input @keyup.enter="addItem" v-model="newItem" placeholder="Add item" type="text" />
               <button @click="addItem">Add</button>
             </div>
-            
-            <h2>Items To Buy</h2>
+            <p v-if="items.length === 0">You don't have any items in your shopping list.</p>
           </div>
 
           <ul class="list">
@@ -35,8 +38,9 @@
       const shoppingList = new Vue( {
         el: '#shopping-list',
         data: {
+          inputState: 'closed',
           header: 'Shopping List App',
-          newItem: '',
+          newItem: 'Test',
           items: [
             'Party Hats',
             'Board Games',
@@ -44,11 +48,16 @@
           ]
         },
         methods: {
-          addItem: function() {
-            this.items.push(this.newItem);
+          addItem: function () {
+            this.items.push( this.newItem );
+            this.newItem = "";
+          },
+          changeState: function (newState) {
+            this.inputState = newState;
             this.newItem = "";
           }
-        }
+        },
+
       } )
     </script>
   </body>
